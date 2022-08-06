@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('lessons', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('name')->unique();
+            $table->string('url')->unique();
+            $table->text('description')->nullable();
+            $table->uuid('module_id')->nullable(false);
+            $table->string('video')->unique();
             $table->timestamps();
         });
     }
