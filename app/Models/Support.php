@@ -20,4 +20,14 @@ class Support extends Model
         'A' => 'Agurdando Aluno',
         'C' => 'Concluido',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
 }

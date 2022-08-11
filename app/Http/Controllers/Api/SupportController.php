@@ -16,10 +16,10 @@ class SupportController extends Controller
        $this->repository = $supportRepository; 
     }
 
-    public function index($courseId)
+    public function index(Request $request)
     {
-        $modules = $this->repository->getModulesCourseById($courseId);
+        $supports = $this->repository->getSupports($request->all());
 
-        return SupportResource::collection($modules);
+        return SupportResource::collection($supports);
     }
 }

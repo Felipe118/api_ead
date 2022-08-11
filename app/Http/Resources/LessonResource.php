@@ -15,7 +15,7 @@ class LessonResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'id' => $this->id,
             'name' => ucwords( strtolower($this->name)),
             'description' => $this->description,
             'video' => $this->video,
