@@ -19,7 +19,7 @@ class SupportRepository
         return $this->getUserAuth()->supports()
         ->where(function($query) use($filters) {
             if(isset($filters['lesson'])) {
-                $query->where('lesson', $filters['lesson']);
+                $query->where('lesson_id', $filters['lesson']);
             }
 
             if(isset($filters['status'])) {
@@ -30,6 +30,17 @@ class SupportRepository
                 $query->where('description','LIKE' , "%{$filters}%");
             }
         })->get();
+    }
+
+    public function createNewSupport(array $data) :Support
+    {
+        $support = $this->getUserAuth()->supports()->create([
+            'lesson_id' => $data['lesson'],
+            'status' => $data['status'],
+            'description' => $data['description'],
+        ]);
+
+        return $support;
     }
 
     public function getUserAuth() :User
