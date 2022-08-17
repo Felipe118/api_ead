@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Api\SupportController;
+use App\Http\Resources\ReplySupportResource;
 
 Route::get('/courses',[CourseController::class, 'index']);
 Route::get('/courses/{id}',[CourseController::class, 'show']);
@@ -18,7 +19,7 @@ Route::get('lesson/{id}',[LessonController::class, 'show']);
 Route::get('/supports',[SupportController::class, 'index']);
 Route::post('/supports',[SupportController::class, 'store']);
 
-Route::post('/supports/{id}/replies',[SupportController::class, 'createReply']);
+Route::post('/replies',[ReplySupportResource::class, 'createReply']);
 
 
 

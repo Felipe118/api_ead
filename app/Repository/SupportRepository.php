@@ -3,10 +3,11 @@
 namespace App\Repository;
 
 use App\Models\Support;
-use App\Models\User;
+use App\Repository\Traits\RepositoryTrait;
 
 class SupportRepository
 {
+    use RepositoryTrait;
     protected $entity;
     
     public function __construct(Support $support)
@@ -58,8 +59,5 @@ class SupportRepository
         return $this->entity->findOrfail($id);
     }
 
-    public function getUserAuth() :User
-    {
-        return User::first();
-    }
+   
 }

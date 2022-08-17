@@ -32,10 +32,6 @@ class SupportController extends Controller
         return new SupportResource($support);
     }
 
-    public function createReply(StoreReplySupport $request, $supportID)
-    {
-        $reply = $this->repository->createReplyToSupportId($supportID, $request->validated());
-        return new ReplySupportResource($reply);
-    }
+  
 
 }
