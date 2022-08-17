@@ -14,11 +14,17 @@ class SupportRepository
     {
         $this->entity = $support;
     }
+
+    public function getMySupport(array $filters = [])
+    {
+        // $filters['user'] = true;
+        return $this->getSupports($filters)->where('user_id', $this->getUserAuth()->id);
+    }
     
     public function getSupports(array $filters = [])
     {
-        return $this->getUserAuth()->supports()
-        ->where(function($query) use($filters) {
+        return $this->entity->
+        where(function($query) use($filters) {
             if(isset($filters['lesson'])) {
                 $query->where('lesson_id', $filters['lesson']);
             }
@@ -30,7 +36,14 @@ class SupportRepository
             if(isset($filters['filter'])) {
                 $query->where('description','LIKE' , "%{$filters}%");
             }
-        })->get();
+            if(isset($filters['user'])) {
+                $user = $this->getUserAuth();
+                $query->where('user_id', $user->id);
+            }
+            
+        })
+        ->orderBy('updated_at')
+        ->get();
     }
 
     public function createNewSupport(array $data) :Support
@@ -54,6 +67,7 @@ class SupportRepository
             'description' => $date['description'],
         ]);
     }
+
     public function getSupport(string $id)
     {
         return $this->entity->findOrfail($id);
