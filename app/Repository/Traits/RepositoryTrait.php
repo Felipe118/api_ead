@@ -7,6 +7,6 @@ use App\Models\User;
     {
         public function getUserAuth() :User
         {
-            return User::first();
+            return auth()->user();
         }
     }

@@ -11,20 +11,27 @@ use App\Http\Resources\ReplySupportResource;
 
 //
 Route::post('/auth', [AuthController::class, 'auth']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
-Route::get('/courses',[CourseController::class, 'index']);
-Route::get('/courses/{id}',[CourseController::class, 'show']);
+Route::middleware(['auth:sanctum'])->group(function(){
 
-Route::get('courses/{id}/modules',[ModuleController::class, 'index']);
+    Route::get('/courses',[CourseController::class, 'index']);
+    Route::get('/courses/{id}',[CourseController::class, 'show']);
+    
+    Route::get('courses/{id}/modules',[ModuleController::class, 'index']);
+    
+    Route::get('modules/{id}/lessons',[LessonController::class, 'index']);
+    Route::get('lesson/{id}',[LessonController::class, 'show']);
+    
+    Route::get('/supports',[SupportController::class, 'index']);
+    Route::post('/supports',[SupportController::class, 'store']);
+    Route::get('/my-supports',[SupportController::class, 'mySupport']);
+    
+    Route::post('/replies',[ReplySupportResource::class, 'createReply']);
+});
 
-Route::get('modules/{id}/lessons',[LessonController::class, 'index']);
-Route::get('lesson/{id}',[LessonController::class, 'show']);
 
-Route::get('/supports',[SupportController::class, 'index']);
-Route::post('/supports',[SupportController::class, 'store']);
-Route::get('/my-supports',[SupportController::class, 'mySupport']);
-
-Route::post('/replies',[ReplySupportResource::class, 'createReply']);
 
 
 
