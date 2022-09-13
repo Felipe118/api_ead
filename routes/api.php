@@ -16,7 +16,7 @@ Route::post('/auth', [AuthController::class, 'auth']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum'); 
 
-/**
+/** 
  * Reset Password
  */
 
@@ -32,6 +32,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
     
     Route::get('modules/{id}/lessons',[LessonController::class, 'index']);
     Route::get('lesson/{id}',[LessonController::class, 'show']);
+    Route::get('/lesson_all',[LessonController::class, 'getAllLessons']);
     Route::post('lesson/viewed',[LessonController::class, 'viewed']);
     
     Route::get('/supports',[SupportController::class, 'index']);

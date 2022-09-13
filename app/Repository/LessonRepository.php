@@ -19,6 +19,11 @@ class LessonRepository
     {
         return $this->entity->where('module_id',$moduleId)->get();
     }
+
+    public function getAll()
+    { 
+        return $this->entity->get();
+    }
   
 
     public function getLesson(string $id) : Lesson
@@ -26,10 +31,10 @@ class LessonRepository
         return $this->entity->findOrFail($id);
     }
 
-    public function markLessonViewed(string $lessonId)
+    public function markLessonViewed($lessonId)
     {
         $user = $this->getUserAuth();
-
+ 
         $view = $user->views()->where('lesson_id',$lessonId)->first();
 
         if($view){
