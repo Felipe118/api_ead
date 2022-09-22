@@ -7,6 +7,11 @@ use Tests\TestCase;
 
 trait UtilsTrait 
 {
+    public function createser()
+    {
+        $user = User::factory()->create();
+        return $user;
+    }
     public function createTokenUser()
     {
         $user = User::factory()->create();
