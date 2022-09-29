@@ -65,4 +65,34 @@ class SupportTest extends TestCase
         $response = $this->json('GET','/supports',$payload,$this->defaultHeaders());
         $response->assertStatus(200)->assertJsonCount(10, 'data');
     }
-}
+
+    public function test_create_support_unauthenticated()
+    {
+        $response = $this->postJson('/supports');
+
+        $response->assertStatus(401);
+    }
+
+    public function test_create_support_verify_erros_validations_and_verify_messages_erros_validations()
+    {
+        $response = $this->postJson('/supports', [],$this->defaultHeaders());
+        $response->assertJsonPath('errors.lesson.0','The lesson field is required.');
+        $response->assertJsonPath('errors.status.0','The status field is required.');
+        $response->assertJsonPath('errors.description.0','The description field is required.');
+        // dd($response->json());
+        $response->assertStatus(422);
+    }
+
+    public function test_create_support()
+    {
+        $lesson = Lesson::factory()->create();
+        $payload = [
+            'lesson' => $lesson->id,
+            'status' => 'P',
+            'description' => 'Teste de descrição'
+        ];
+        $response = $this->postJson('/supports',$payload,$this->defaultHeaders());
+       
+        $response->assertStatus(201);
+    }
+} 

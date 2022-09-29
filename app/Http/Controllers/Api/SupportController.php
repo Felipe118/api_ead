@@ -29,7 +29,8 @@ class SupportController extends Controller
    
     public function store(StoreSupport $request)
     {
-        $support = $this->repository->createNewSupport($request->validate());
+        
+        $support = $this->repository->createNewSupport($request->all());
         return new SupportResource($support);
     }
 

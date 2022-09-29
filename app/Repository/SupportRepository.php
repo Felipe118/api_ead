@@ -43,11 +43,12 @@ class SupportRepository
             
         })
         ->orderBy('updated_at')
-        ->get();
+        ->get(); 
     }
 
     public function createNewSupport(array $data) :Support
     {
+        
         $support = $this->getUserAuth()->supports()->create([
             'lesson_id' => $data['lesson'],
             'status' => $data['status'],
