@@ -8,19 +8,20 @@ use App\Http\Resources\ReplySupportResource;
 use App\Repository\ReplySupportRepository;
 use Illuminate\Http\Request;
 
-class ReplySupportController extends Controller
+class ReplySupportController extends Controller 
 {
     
     
     public function __construct(ReplySupportRepository $replySupportRepository)
-    {
+    { 
         $this->repository = $replySupportRepository;
-    }
+    } 
     
 
-    public function createReply(StoreReplySupport $request)
+    public function createReply(StoreReplySupport $request) 
     {
-        $reply = $this->repository->createReplyToSupportId($request->validated());
+        //dd($request->all());
+        $reply = $this->repository->createReplyToSupport($request->validated()); 
         return new ReplySupportResource($reply);
     }
 }

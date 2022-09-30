@@ -11,7 +11,7 @@ class CourseTest extends TestCase
 { 
     use UtilsTrait;
 
-    public function test_unathenticated()
+    public function test_unauthenticated()
     {
     //    $token = $this->createTokenUser();
 

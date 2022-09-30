@@ -10,22 +10,20 @@ class ReplySupportRepository
     use RepositoryTrait;
     protected $entity;
     
-    public function __construct(ReplySupport $support)
+    public function __construct(ReplySupport $model)
     {
-        $this->entity = $support;
+        $this->entity = $model;
     }
-    
-    
-
-    public function createReplyToSupport(array $date)
+     
+    public function createReplyToSupport(array $date) 
     {
         $user = $this->getUserAuth();
         
-        $this->enity
+        return $this->entity
         ->create([
-            'support_id' => $date['support'],
-            'user_id' => $user->id,
+            'support_id' => $date['support'], 
             'description' => $date['description'],
+            'user_id' => $user->id, 
         ]);
     }
     

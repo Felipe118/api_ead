@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\LessonController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\ModuleController;
+use App\Http\Controllers\Api\ReplySupportController;
 use App\Http\Controllers\Api\SupportController;
 use App\Http\Resources\ReplySupportResource;
 
@@ -39,7 +40,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('/supports',[SupportController::class, 'store']);
     Route::get('/my-supports',[SupportController::class, 'mySupport']);
     
-    Route::post('/replies',[ReplySupportResource::class, 'createReply']);
+    Route::post('/replies',[ReplySupportController::class, 'createReply']);
 });
 
 
