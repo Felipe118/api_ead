@@ -26,10 +26,8 @@ class AuthController extends Controller
             'token' => $user->createToken($request->device_name)->plainTextToken,
         ]);
 
-       
-
-
     }
+    
     public function logout()
     {
         auth()->user()->tokens()->delete();

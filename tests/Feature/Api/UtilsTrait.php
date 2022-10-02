@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 trait UtilsTrait 
 {
-    public function createser()
+    public function createUser()
     {
         $user = User::factory()->create();
         return $user;
