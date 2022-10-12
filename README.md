@@ -1,5 +1,8 @@
+# Api EAD
+- Criando uma api para um projeto de EAD, utilizando as melhores práticas Desgin Patterns e padõres SOLID.
 
-# Instalação do projeto 
+
+## Instalação do projeto 
 
 ### Passo a passo
 Clone Repositório
@@ -62,4 +65,4 @@ php artisan key:generate
 
 
 Acesse o projeto
-[http://localhost:8180](http://localhost:8180)
+[http://localhost:8989](http://localhost:8180)
