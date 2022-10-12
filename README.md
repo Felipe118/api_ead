@@ -4,23 +4,7 @@
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/especializati/setup-docker-laravel.git laravel9
-```
-
-```sh
-cd laravel9/
-```
-
-
-Alterne para a branch laravel 8.x
-```sh
-git checkout laravel-9-com-php-8
-```
-
-
-Remova o versionamento
-```sh
-rm -rf .git/
+git clone https://github.com/Felipe118/api_ead.git
 ```
 
 
