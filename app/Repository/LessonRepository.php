@@ -17,7 +17,7 @@ class LessonRepository
 
     public function getLessonsByModuleId(string $moduleId)
     {
-        return $this->entity->where('module_id',$moduleId)->get();
+        return $this->entity->with('supports.replies')->where('module_id',$moduleId)->get();
     }
 
     public function getAll()

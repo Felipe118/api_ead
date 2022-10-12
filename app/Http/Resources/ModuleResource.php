@@ -8,7 +8,7 @@ class ModuleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
@@ -17,6 +17,7 @@ class ModuleResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'lesson' => LessonResource::collection($this->whenLoaded('lessons')),
         ];
     }
 }

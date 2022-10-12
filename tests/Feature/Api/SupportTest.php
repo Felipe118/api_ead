@@ -22,7 +22,7 @@ class SupportTest extends TestCase
 
     public function test_get_support_and_count_if_only_my_user()
     {
-        $user = $this->createser();
+        $user = $this->createuser();
 
 
         $token = $user->createToken('teste')->plainTextToken;

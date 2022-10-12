@@ -42,6 +42,7 @@ class SupportRepository
             }
             
         })
+        ->with('replies')
         ->orderBy('updated_at')
         ->get(); 
     }
