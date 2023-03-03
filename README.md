@@ -2,7 +2,7 @@
 - Criando uma api para um projeto de EAD, utilizando as melhores práticas Desgin Patterns e padõres SOLID.
 
 
-## Instalação do projeto 
+### Instalação do projeto 
 
 ### Passo a passo
 Clone Repositório
